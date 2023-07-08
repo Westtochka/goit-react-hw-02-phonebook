@@ -1,5 +1,12 @@
-export const App = () => {
-  return (
+import { Component } from 'react'
+
+class App extends Component {
+  state = {
+    contacts: [],
+    name: ''
+  }
+render() {
+ return (
     <div
       style={{
         height: '100vh',
@@ -12,5 +19,10 @@ export const App = () => {
     >
       React homework template
     </div>
-  );
-};
+    )
+
+}
+
+}
+export default App
+
