@@ -1,9 +1,21 @@
 import { Component } from 'react'
+import { ContactTitle } from "../components/ContactTitle/ContactTitle";
+import {FormignUp} from "../components/FormSignUp/FormSignUp";
+import { nanoid } from 'nanoid'
 
-class App extends Component {
+class App extends Component { 
   state = {
     contacts: [],
-    name: ''
+    filter: ''
+  }
+  createUser=(data)=>{
+    const newUser={
+      id: nanoid(),
+      isDev: true,
+      ...data
+    }
+    console.log(newUser)
+    console.log(data)
   }
 render() {
  return (
@@ -17,7 +29,8 @@ render() {
         color: '#010101'
       }}
     >
-      React homework template
+      <ContactTitle title={'Phonebook'}/>
+      <FormignUp createUser={this.createUser}/>
     </div>
     )
 
