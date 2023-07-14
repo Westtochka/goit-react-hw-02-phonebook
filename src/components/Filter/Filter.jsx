@@ -1,11 +1,10 @@
 // import PropTypes from 'prop-types';
 
-export const AddNewContact = ({ id, name, number, onDeleteContact }) => (
-    <li>
+export const Filter = ({ id, name, number, onDeleteContact, createUser }) => (
+  //  {id, name, number }=this.createUser
+  <li>
       <p>{name}: <span>{number}</span></p> 
-      <button
-        type="button"
-        onClick={() => onDeleteContact(id)}>Delete</button>
+      <button type="button"onClick ={() => onDeleteContact(id)}>Delete</button>
     </li>
 )
 
@@ -16,4 +15,4 @@ export const AddNewContact = ({ id, name, number, onDeleteContact }) => (
 //   onDeleteContact: PropTypes.func.isRequired
 // }
 
-export default AddNewContact;
+export default Filter;

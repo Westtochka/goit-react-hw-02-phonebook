@@ -1,7 +1,7 @@
 import { Component } from 'react'
 // import PropTypes from 'prop-types';
 
-export class FormignUp extends Component {
+export class ContactForm extends Component {
   state = {
     name: '',
     number: ''
@@ -11,14 +11,13 @@ export class FormignUp extends Component {
   {this.setState({[name]:value})}  
   // handleNumberChange=(e)=>{this.setState({number: e.target.value})}  
   
-  handlerSubmit=(e)=>{
+  handlerSubmit=e=>{
   e.preventDefault()
   this.props.createUser(this.state)
   this.reset();
   }
     
-    
-reset=()=>{
+  reset=()=>{
   this.setState({
     name: '',
     number: ''
@@ -48,7 +47,7 @@ render(){
   value={this.state.number}
 /></label>
 
-<button >Add contact</button>
+<button type="submit" disabled={!this.state.name||!this.state.number} >Add contact</button>
 
   </form>)
 }};

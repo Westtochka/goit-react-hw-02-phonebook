@@ -1,8 +1,9 @@
 import { Component } from 'react'
 import { ContactTitle } from "../components/ContactTitle/ContactTitle";
-import {FormignUp} from "../components/FormSignUp/FormSignUp";
-import {ContactList} from "../components/ContactList/ContactList";
-import {AddNewContact} from '../components/AddNewContact/AddNewContact'
+import {ContactForm} from "./ContactForm/ContactForm";
+import {ContactList} from '../components/ContactList/ContactList';
+// import {ContactItem} from '../components/ContactListItem/ContactItem';
+// import {Filter} from './Filter/Filter'
 import { nanoid } from 'nanoid';
 
 class App extends Component { 
@@ -20,6 +21,7 @@ class App extends Component {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id)
       }))
+      // this.setState({ contacts: [...contacts, newContact] })
   }
 
   createUser=(data)=>{
@@ -29,6 +31,7 @@ class App extends Component {
     }
     console.log(newUser)
     console.log(data)
+    this.setState({ contacts: [...this.state.contacts, newUser] })
   }
 
 render() {
@@ -44,9 +47,12 @@ return (
       }}
     >
       <ContactTitle title={'Phonebook'}/>
-      <FormignUp />
+      <ContactForm createUser={this.createUser}/>
       <ContactList contacts={this.state.contacts} onDeleteContact={this.deleteContact}/>
-      <AddNewContact createUser={this.createUser} onDeleteContact={this.deleteContact}/>
+
+      {/* <Filter createUser={this.createUser}
+      onDeleteContact={this.deleteContact} */}
+      {/* /> */}
     </div>
     )
 
