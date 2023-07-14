@@ -9,8 +9,7 @@ export class ContactForm extends Component {
 
   handleChange=({target:{name,value}})=>
   {this.setState({[name]:value})}  
-  // handleNumberChange=(e)=>{this.setState({number: e.target.value})}  
-  
+ 
   handlerSubmit=e=>{
   e.preventDefault()
   this.props.createUser(this.state)
