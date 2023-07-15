@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { FORM, Label, Input, Button} from "./ContactForm.style";
 // import PropTypes from 'prop-types';
 
 export class ContactForm extends Component {
@@ -10,11 +11,12 @@ export class ContactForm extends Component {
   handleChange=({target:{name,value}})=>
   {this.setState({[name]:value})}  
  
-  handlerSubmit=e=>{
-  e.preventDefault()
-  this.props.createUser(this.state)
-  this.reset();
-  }
+  handlerSubmit = (e) => {
+    e.preventDefault();
+    const { name, number } = this.state;
+    this.props.createUser({ name, number });
+    this.reset();
+  };
     
   reset=()=>{
   this.setState({
@@ -22,11 +24,13 @@ export class ContactForm extends Component {
     number: ''
   })
 }
+
+
 render(){
     return (
-<form onSubmit={this.handlerSubmit}>
-    <label> Name 
-  <input
+<FORM onSubmit={this.handlerSubmit}>
+    <Label> Name  
+  <Input
   type="text"
   name="name"
   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -34,9 +38,9 @@ render(){
   required
   value={this.state.name}
   onChange={this.handleChange}
-/></label>
-<label> Number 
-<input
+/></Label>
+<Label> Number 
+<Input
   type="tel"
   name="number"
   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -44,9 +48,9 @@ render(){
   required
   onChange={this.handleChange}
   value={this.state.number}
-/></label>
+/></Label>
 
-<button type="submit" disabled={!this.state.name||!this.state.number} >Add contact</button>
+<Button type="submit"  disabled={!this.state.name||!this.state.number} >Add contact</Button>
 
-  </form>)
+  </FORM>)
 }};
